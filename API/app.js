@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const cors = require('cors')
-const routerFile = require('./router');
-//app.use(express.json());
+const ecommerce = require('./ecommerce/ecommerceRouter');
+app.use(express.json());
 const corsOptions = {
     methods:'GET,PUT,POST,DELETE',
      origin:'*'
@@ -10,7 +10,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
-app.use('/ecommerce',routerFile);
+app.use('/ecommerce',ecommerce);
 app.get('*',(req,res)=>{
     res.send({
         key:'404',
